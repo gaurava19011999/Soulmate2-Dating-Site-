@@ -1,0 +1,4 @@
+.soulenv/*
+./assets/*
+/static/*
+/.vscode/*

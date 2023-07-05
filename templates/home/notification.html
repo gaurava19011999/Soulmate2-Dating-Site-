@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{%  static 'css/notification.css' %}">
+	<meta charset="utf-8">
+	<title>Notifications</title>
+</head>
+<body>
+<div class="topnav">
+  <a class="hvr" href="#SignOut">Sign Out</a>
+  <a class="active hvr" href="{% url 'notification' %}">Notifications</a>
+  <a class="hvr" href="{% url 'default' %}">Messages</a>
+  <a class="hvr" href="{% url 'matching' %}">Xplore</a>
+  <a class="brand" href="#home"><img class="logo-image" src="{% static 'img/logo-for-nav.png' %}"></a>
+</div>
+
+<div class="main">
+{% for r in res %}
+	<div class="section">
+		<div class="wrap">
+			{% comment %} <img src="{{r.sender.image}}"> {% endcomment %}
+			<div class="text">
+				<h1>{{r.sender.first_name}}</h1>
+				<p>Likes You</p>
+		</div>
+		<div class="buttons">
+			<button class="accept"  onclick="acceptFriendRequest({{r.id}})">Accept</button>
+				<button class="reject" onclick="declineFriendRequest({{r.id}})">Decline</button>
+			</div>
+		</div>
+	</div>
+{%endfor%}
+</div>
+
+<script type="text/javascript"> 
+	function acceptFriendRequest(friend_request_id){
+		var res  = friend_request_id;
+		//alert('first' + res);	
+   		payload = {
+			"csrfmiddlewaretoken": "{{csrf_token}}",
+			"friend_request_id": res,
+			}
+
+		$.ajax({
+			type:"POST",
+			dataType:"json",
+			url:"accept_friend_request/",
+			timeout : 5000,
+			data : payload,
+
+			success: function(data){
+			//	alert('got in to success')
+				if(data.response == "Friend request accepted"){
+					alert('Accepted');
+					location.reload();
+				}
+				else if(data.response!= null){
+					alert('error :' + data.response);
+				}
+			},
+			error: function(data){
+				alert("Something went  wrong" + data);
+			},
+		})
+		//alert('last one')
+	}
+</script>
+<script type="text/javascript"> 
+	function declineFriendRequest(friend_request_id){
+		var res  = friend_request_id;
+		//alert('first' + res);	
+   		payload = {
+			"csrfmiddlewaretoken": "{{csrf_token}}",
+			"friend_request_id": res,
+			}
+
+		$.ajax({
+			type:"POST",
+			dataType:"json",
+			url:"decline_friend_request/",
+			timeout : 5000,
+			data : payload,
+
+			success: function(data){
+			//	alert('got in to success')
+				if(data.response == "Friend request declined"){
+					alert('Declined');
+					location.reload();
+				}
+				else if(data.response!= null){
+					alert('error :' + data.response);
+				}
+			},
+			error: function(data){
+				alert("Something went  wrong" + data);
+			},
+		})
+		//alert('last one')
+	}
+</script>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+{% comment %} <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> {% endcomment %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <link rel="shortcut icon" href="#">
+	<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
+
+	<!--<script src="https://use.typekit.net/hoy3lrg.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>-->
+  <!--<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>-->
+	<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/messages.css' %}">
+	<!--<script type="text/javascript" src="messages.js"></script>-->
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="hvr" onClick="document.getElementById('logoutform').submit()">Sign Out</a>
+  <a class="hvr" href="{% url 'notification' %}">Notifications</a>
+  <a class="active hvr" href="#messages">Messages</a>
+  <a class="hvr" href="{% url 'matching' %}">Xplore</a>
+  <a class="brand" href="#home"><img class="logo-image" src="{% static 'img/logo-for-nav.png' %}"></a>
+</div>
+
+<div id="frame">
+  <div id="sidepanel">
+    <div id="profile">
+      <div class="wrap">
+        <img id="profile-img" src="{{user.parent_user.image.url}}" class="online" alt="" />
+        <p>{{user.first_name}}</p>
+      </div>
+    </div>
+    <div id="search">
+      <input type="text" placeholder="🔍 Search Matches..." />
+    </div>
+    <div id="contacts">
+      <ul>
+        {% if info %}
+            {% for i in info %}
+              {% for name in i.friends.all %} 
+            <li class="contact active">
+            <a href="/chatroom/check/{{name.email}}/view">
+                <div class="wrap" id="display2">
+                  <span class="contact-status busy"></span>
+                  <img src="{{name.parent_user.image.url}}" alt="" />
+                    <div class="meta">
+                    
+                      <p class="name">{{name.first_name}}</p>
+                      <p class="preview">Click here to open chat</p>
+                      
+                        </div>
+                    </div>
+                    </li>
+                </a>
+                      {% endfor %}
+                  {% endfor %}
+        {% else %}
+        <li class="contact-active">
+           <p style="text-align:center; margin-top:50%; list-style-type:none;"> You don't have any friends yet! </p>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+  <div class="content">
+
+      <div id="display">
+      <h1 style="text-align:center; margin:30%;" >Tap on a contact to start conversation :)</h1>
+      </div>
+  </div>
+</div>
+</body>
+
+</html>

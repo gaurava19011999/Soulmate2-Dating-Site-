@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> 
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/edit_profile.css' %}">
+
+	<title>Create Profile</title>
+</head>
+<body>
+
+        <nav class="navbar navbar-dark bg-bright navbar-expand-sm sticky-top navbar-custom " id="navbar">
+                <div class="container">
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topnav"><span class="navbar-toggler-icon"></span>
+                    </button>
+                    <h1>SOULMATE</h1>
+                    <div class="collapse navbar-collapse" id="topnav" style="color: black;" >
+                        {% comment %} <ul class="nav navbar-nav ml-auto">
+                        <a href="{% url 'matching' %}">	<button class="savebtn" ><b>Save</b></button> </a>
+                        </ul>
+                    </div> {% endcomment %}
+
+                </div>
+        </nav>
+	<div class="main-div">
+		<h2 id="welcome">Hey {{user.first_name}}, let us know you better!</h2>
+                <!--Alerts-->
+    {% include 'partials/alerts.html' %}
+	<form action="{% url 'profile' %}" method="POST" enctype="multipart/form-data"> 	
+	{% csrf_token %}
+		<div class="form-row">
+
+			<div class="file-upload">
+			  <div class="image-upload-wrap">
+			    <input class="file-upload-input" type='file' name="image1" onchange="readURL(this);" accept="image/*" />
+			    <div class="drag-text">
+			      <h3>Pick<br>a<br>Profile<br>Pic</h3>
+			    </div>
+			  </div>
+			  <div class="file-upload-content">
+			    <img class="file-upload-image" src="#" alt="your image" />
+			    <div class="image-title-wrap">
+			      <button type="button" onclick="removeUpload()" class="remove-image">Change</button>
+			    </div>
+			  </div>
+			</div>
+
+			<div class="detailsform">
+			<div class="left">
+			  <h3 id="info-head">Personal Details</h3><br>
+			 <!--  <label for="name">Full Name:</label><br> -->	
+			<!--   <input type="text" id="fullname" name="name" maxlength="25" required="text" placeholder="Full Name" ><br> -->
+<!-- 			  <label for="age">Your Age</label><br> -->
+			  <input type="number" id="age" min="18" size="2" maxlength="2" name="age" required="number" placeholder="Your age"><br><!-- 
+         	  <label for="Height">Height (in cm)</label><br> -->
+         	  <input type="number" min="50" max="250" name="height" size="3" maxlength="3" required="number" placeholder="Height (cm)"><br>
+  <!--        	  <label for="Height">Select Your Gender</label><br> -->
+         	  <select class="dropdown" name="gender"  id="gender" required="select">
+			    <option id="disabled" value selected disabled>Your Gender</option>
+                <option value = "M">Male</option>
+                <option value = "F">Female</option>
+                <option value = "T">Transgender</option>
+                <option value = "NB">Non Binary</option>
+         	    </select><br><br>
+      <!--    	  <label  for="hobbies">Hobbies</label><br> -->
+         	  <input id="hobbies" type="text" id="hobbies" maxlength="400" name="hobbies" placeholder="Hobbies"><br>
+<!--          	  <label for="bio">Bio </label><br> -->
+			  <textarea id="bio" name="bio" maxlength="1000" required placeholder="Bio (max limit 400)"></textarea><br>
+			  <select class="dropdown" name = "location" id="location" required="select">
+				    <option id="disabled" value selected disabled>Your Location</option>
+					<option value = "Assam">Assam</option>
+					<option value = "Bangalore">Bangalore</option>
+					<option value = "Delhi">Delhi</option>
+					<option value = "Ghaziabad">Ghaziabad</option>
+					<option value = "Gujrat">Gujrat</option>
+					<option value = "Kerela">Kerela</option>
+					<option value = "Mumbai">Mumbai</option>
+					<option value = "Noida">Noida</option>
+					<option value = "Pune">Pune</option>
+					<option value = "Tamil Nadu">Tamil Nadu</option>
+	         	</select><br><br><br>
+         	</div>
+         	<div class="right">
+			    <h3 id="info-head">Personal Prefrences</h3><br>
+
+<!-- 			    <label for="preferedage">Select Prefered Age</label><br><br> -->
+			 	<select class="dropdown" name = "prefered_age" id="preferedage" required="select">
+				    <option id="disabled" value selected disabled>Prefered Age</option>
+	                <option value = "Y">18 - 25</option>
+	                <option value = "O">26 - 45</option>
+	                <option value = "E">45+</option>
+	         	</select><br><br><br>
+<!-- 			    <label for="location">Select Prefered Location</label><br><br> -->
+				<select class="dropdown" name = "prefered_location" id="preferedocation" required="select">
+				    <option id="disabled" value selected disabled>Prefered Location</option>
+	              	<option value = "Assam">Assam</option>
+					<option value = "Bangalore">Bangalore</option>
+					<option value = "Delhi">Delhi</option>
+					<option value = "Ghaziabad">Ghaziabad</option>
+					<option value = "Gujrat">Gujrat</option>
+					<option value = "Kerela">Kerela</option>
+					<option value = "Mumbai">Mumbai</option>	
+					<option value = "Noida">Noida</option>
+					<option value = "Pune">Pune</option>
+					<option value = "Tamil Nadu">Tamil Nadu</option>
+	         	</select><br><br><br>
+<!-- 	         	<label for="preferedgender" > Select Your Prefered Gender</label><br><br> -->
+				<select class="dropdown" name="prefered_gender" id="preferedgender" required="select">
+				    <option value selected disabled>Prefered Gender</option>
+	                <option value = "M">Male</option>
+                    <option value = "F">Female</option>
+                    <option value = "A">ALL</option>
+	         	</select><br><br>
+         	</div>
+			<br><br><br><br>
+			<div class="btnsub">
+			<a href="{% url 'matching' %}">	<button id="submitbtn" type="submit" ><b>SAVE</b></button> </a>
+				<button id="resetbtn" type="reset"><b>RESET</b></button>
+			</div>
+			</div>
+		</div>
+	</form>
+	</div>
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'js/edit_profile.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+<script src="{% static 'js/alert.js' %}"></script>
+
+</body>
+</html>

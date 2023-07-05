@@ -1,0 +1,255 @@
+* {box-sizing: border-box}
+
+body { 
+    background-image: linear-gradient(to right top, #db1b61, #ec3451, #f84e40, #fe692b, #fe8408);
+    font-family: 'Varela Round', sans-serif;
+    margin:0;
+    height: 100vh;
+  }
+
+
+.topnav {
+    max-height: 60px;
+    overflow: hidden;
+    background-color: black;
+}
+
+.topnav {
+    max-height: 60px;
+    overflow: hidden;
+    background-color: black;
+}
+
+.topnav a {
+    font-family: 'Akaya Kanadaka', cursive ;
+    float: right;
+    color: white;
+    text-align: center;
+    padding: 22px 16px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.topnav a.active {
+    background: #191c1e;
+    -webkit-box-shadow:inset 0px 3px 0px px white;
+    -moz-box-shadow:inset 0px 3px 0px px white;
+    box-shadow:inset 0px 3px 0px 0px white;
+    color: white;
+}
+
+.hvr:hover {
+  color: white;
+  background-color: grey;
+}
+
+
+.topnav .brand{
+  font-size: 30px;
+  margin-right: 37%;
+  padding: 0 0 0 0;
+}
+
+
+.logo-image{
+    height: 60px;
+}
+
+img {
+  border-radius: 2vw;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  object-fit: contain;
+  height: 80.5vh;
+  min-width: 25vw;
+  max-width: 25vw;
+
+}
+
+.btn2 {
+  position: absolute;
+  top: 75%;
+  left: 95%;
+  background: none;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.fa-heart{
+      background:-moz-linear-gradient(to right top, #db1b61, #ec3451, #f84e40, #fe692b, #fe8408);
+        background: -webkit-linear-gradient(to right top, #db1b61, #ec3451, #f84e40, #fe692b, #fe8408); 
+        background: linear-gradient(to right top, #db1b61, #ec3451, #f84e40, #fe692b, #fe8408);
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+       -webkit-text-fill-color:transparent;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: white;
+  }
+
+.fa-heart:active{
+color: #F00000;  /* fallback for old browsers */
+color: -webkit-linear-gradient(to right, #DC281E, #F00000);  /* Chrome 10-25, Safari 5.1-6 */
+color: linear-gradient(to right, #DC281E, #F00000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  transform: translateY(4px);
+}
+
+.fa-home{
+  color: white;
+}
+
+.main-container{
+  border: 2px solid black ;
+  width: 1100px;
+  height: 82vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 2vw;
+  position: relative;
+  margin-top: 4vh;
+  margin-bottom: 3vh;
+  margin-right: 10vw;
+  margin-left: 10vw;
+  background-color: black;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  width: 1000px;
+  height: 85vh;
+  position: absolute;
+  margin-top: 0vh;
+  margin-bottom: 0vh;
+  margin-right: 10vw;
+  margin-left: 5vw;
+  float: left;
+}
+
+.profile-container .left-div{
+  border: 2px solid white ;
+  box-shadow: 0px 0px 5px white;
+  border-radius: 2vw;
+}
+
+.details {
+  text-align: left;
+  border-radius: 2vw;
+  width: 520px;
+  height: 82vh;
+  position: absolute;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-top: 0vh;
+  margin-bottom: 0vh;
+  margin-right: 5vw;
+  margin-left: 10vw;
+}
+
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 10px;
+  margin-top: -22px;
+  color:  #fff ;
+  font-weight: bold;
+  font-size: 35px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+
+}
+
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: white;
+  color: black ;
+}
+
+/* Caption text */
+.text {
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+
+  margin-left: 3vw ;
+  position: absolute;
+  top: 82%;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center ;
+}
+
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+
+/* Left and right */
+
+.left-div{
+  display: block;
+  float:left;
+  background-color: black;
+}
+
+.right-div{
+  display: block;
+  overflow: hidden;
+}
+#user-media-img{
+  max-width: 400px;
+}
+
+#detail-item{
+  object-fit: contain;
+  background-color: red;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+h1{
+  color: white;
+  font-family: 'Aladin', cursive;
+}
+p{  
+    margin-left: 1vw;
+    color: white;
+
+}

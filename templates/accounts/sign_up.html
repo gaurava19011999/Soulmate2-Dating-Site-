@@ -1,0 +1,38 @@
+{% extends 'base_accounts.html' %}
+
+{% block content %}
+
+  <form action="{% url 'sign_up' %}" method="POST">
+    {% csrf_token %}
+    <div class="signup-div">
+    
+      <div class="logo"></div>
+      <div class="title"><strong>SOULMATE</strong></div>
+      <div class="sub-title">"Get the ideal partner"</div>
+      <div class="fields">
+              <!--Alerts-->
+    {% include 'partials/alerts.html' %}  
+      	<div class="name"><i class="fas fa-user-alt"></i><input type="fist name" name="first_name" class="user-input" placeholder="First Name" /></div>
+
+        <div class="name"><i class="fas fa-user-alt"></i><input type="last name" name="last_name" class="user-input" placeholder="Last name" /></div>
+
+        <div class="email"><i class="fas fa-envelope"></i><input type="email" name="email" class="user-input" placeholder="Email Address" /></div>
+
+<!--        <div class="phone"><i class="fas fa-phone-alt"></i><input type="" required class="user-input" placeholder="Phone Number" /></div>
+-->
+        <div class="password"><i class="fas fa-user-lock"></i><input type="password" name="password1"  required class="pass-input" placeholder="New Password" id="myInput" />
+        <span class="eye" onclick="myFunction()">
+        	<i class="fas fa-eye" id="hide1"></i>
+        	<i class="fas fa-eye-slash" id="hide2"></i>
+        </span>
+    	</div>
+
+        <div class="password"><i class="fas fa-user-lock"></i><input type="password" name="password2" required class="pass-input" placeholder="Confirm Password"/></div>
+      </div>
+      <button class="signin-button">SIGN UP</button>
+      <div class="link"><a href="{% url 'login' %}"><strong>LOG IN</strong></a></div>
+      <div class="trouble"><a href="">Having Trouble? Contact Us </a></div>
+    </div>
+  </form>
+
+{% endblock %}

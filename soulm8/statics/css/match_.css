@@ -1,0 +1,238 @@
+
+* {box-sizing: border-box}
+
+body {font-family: Verdana,sans-serif;margin:0}
+
+
+.topnav {
+  overflow: hidden;
+  background-color: #97e421;
+}
+
+.topnav a {
+
+  float: right;
+  color: black;
+  text-align: center;
+  padding: 15px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #AAFF00;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: white;
+  color: black;
+}
+
+.topnav .brand{
+  text-align: left;
+  display: inline-block;
+  color: black;
+  margin-right: 50%;
+}
+
+img {
+  border-radius: 2vw;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  object-fit: contain;
+  height: 85vh;
+
+}
+
+  /* .btn1 {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: absolute;
+    top: 90%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: darkred;
+    color: white;
+    font-size: 16px;
+    padding: 12px 40px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+  } */
+
+.btn2 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: green;
+  color: white;
+  font-size: 16px;
+  padding: 12px 40px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+
+.main-container{
+  width: 1100px;
+  height: 105vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 2vw;
+  position: relative;
+  margin-top: 4vh;
+  margin-bottom: 3vh;
+  margin-right: 10vw;
+  margin-left: 10vw;
+  background-color: pink;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  width: 1000px;
+  height: 85vh;
+  position: absolute;
+  margin-top: 0vh;
+  margin-bottom: 0vh;
+  margin-right: 10vw;
+  margin-left: 5vw;
+  float: left;
+}
+
+.details {
+  border-radius: 1vw;
+  width: 560px;
+  height: 85vh;
+  position: absolute;
+  margin-top: 0vh;
+  margin-bottom: 0vh;
+  margin-right: 5vw;
+  margin-left: 10vw;
+}
+
+/* .details-container .details h1 {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: black;
+  font-size: 25px;
+  margin-left: 30px;
+}
+.details-container .details p {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: skyblue;
+  margin-left: 30px;
+
+} */
+
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 10px;
+  margin-top: -22px;
+  color:  #000 ;
+  font-weight: bold;
+  font-size: 35px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+
+  color: black ;
+  background-color: #97e421 ;
+}
+
+/* Caption text */
+.text {
+  background-color: black;
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 11.5px 80px;
+  margin-left: 90px ;
+  position: absolute;
+  top: 86.5%;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+}
+
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+/* profile container */
+
+.profile-container{
+  margin: 5%;
+}
+
+/* Left and right */
+
+.left-div{
+  display: inline-block;
+  background-color: white;
+  width: 45%;
+  vertical-align: top;
+}
+
+.right-div{
+  display: inline-block;
+  width: 50%;
+  overflow: hidden;
+}
+#user-media-img{
+  max-width: 400px;
+}
+
+#detail-item{
+  object-fit: contain;
+  background-color: red;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}

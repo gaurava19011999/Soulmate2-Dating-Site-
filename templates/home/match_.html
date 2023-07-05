@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/match.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div class="topnav">
+  <a href="#SignOut">Sign Out</a>
+  <a href="/accounts/profile">Edit Profile</a>
+  <a href="/chatroom/default">Messages</a>
+  <a class="active" href="#home">Find Connections</a>
+  <a class="brand">SoulMate</a>
+</div>
+
+
+<div class="main-container">
+  <div class="slideshow-container">
+    {% if profiles %}
+      {% for p in profiles %}
+      
+      <div class="profile-container" style="position: relative">
+              <div class ="left-div"> 
+                  <div class="mySlides fade">
+                    <img src="media/{{p.image}}" style="width:100%" id="user-media-img">
+
+                    <div class="text">First Name : {{p.user.first_name}} </div>
+                  </div>
+              </div>
+            <div class="right-div">
+                <div class="details">
+                    <h1>BIO</h1>
+                    <p>{{p.bio}}</p>
+                    <h1>Age:</h1><p>{{p.age}}</p>
+                    <h1>Location:</h1><p>{{p.location}}</p>
+                    <h1>Hobbies:</h1>
+                    <p>{{p.hobbies}}</p>
+                </div>
+            </div>
+        <button class="btn2" onclick="sendFriendRequest({{p.user_id}})" id="like{{p.id}}" data-id="{{p.user_id}}">LIKE</button>
+      </div>
+        {% endfor %}
+    {% else %}
+        {% comment %} Need to make a well design div or Something here {% endcomment %}
+      <h1 style="text-align:center"> OOPS! Look like there are not may suitables matches for you right now. </h1>
+    {%endif%}
+  </div>
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<script type="text/javascript">
+//$('.btn2').click(function(){
+function sendFriendRequest(user_id){
+   // alert('ok');
+    //var reqtype = $(this).attr("data-id");
+    var reqtype = user_id ; 
+  //  alert("Capture: " + reqtype);
+    payload = {
+      "csrfmiddlewaretoken": "{{csrf_token}}",
+      "reciever_user_id": reqtype,
+    }
+    $.ajax({
+      type:"POST",
+      dataType:"json",
+      url:"friend_request/",
+      timeout: 5000,
+      data: payload,
+
+      success: function(data){
+          console.log("Success:" + data)
+         // alert('data in to payload')
+          if(data['response'] == "Friend Request Sent"){
+              alert('Request Sent')
+          }
+          else if(data['response'] != null){
+            alert(data['response'])
+            //alert('second')
+          }
+          else if(data['response'] == "Already Sent!"){
+              alert('Request Already Sent!')
+          }
+          else {
+            alert('Unknown Error!')
+          }
+      },
+      error: function(data){
+            alert("Something went wrong: " + data)
+      },      
+    })
+  }
+  
+
+</script>
+
+<script src="{% static 'js/match.js' %}"></script>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+{% comment %} <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> {% endcomment %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html> 

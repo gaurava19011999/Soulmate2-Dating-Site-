@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+	<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript" src="{% static 'js/profile.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+	          <!--Alerts-->
+    {% include 'partials/alerts.html' %}
+
+	<title>Edit Profile</title>
+</head>
+<body>
+	<h1>Edit Profile</h1>
+	<h2> User Name : {{ user.first_name}} </h2>
+	<form action="{% url 'profile' %}" method="POST" enctype="multipart/form-data"> 	
+	{% csrf_token %}
+		<div class="form-row">
+			<div class="file-upload">
+			  <div class="image-upload-wrap">
+			    <input class="file-upload-input" type='file' name="image1" onchange="readURL(this);" accept="image/*" />
+			    <div class="drag-text">
+			      <h3>Select a Profile Picture</h3>
+			    </div>
+			  </div>
+			  <div class="file-upload-content">
+			    <img class="file-upload-image" src="#" alt="your image" />
+			
+			  </div>
+			  <button class="file-upload-btn" type="submit" onclick="$('.file-upload-input').trigger( 'click' )">Upload</button>
+			</div><br><br><br>
+
+			<div class="detailsform">
+			  <h3>Personal Details</h3><br>
+
+			  <label for="bio">Bio (Max Words Limit 400)</label><br><br>
+			  <input type="text" id="bio" name="bio" maxlength="400" required><br><br>
+			  <label for="age">Enter Your Age</label>
+			  <input type="number" id="age" min="18" size="2" maxlength="2" name="age" required="number"><br><br><br>
+			    <select class="dropdown" name = "gender" id="gender" required="select">
+			    <option value selected disabled> -- selected Your Gender -- </option>
+                <option value = "M">Male</option>
+                <option value = "F">Female</option>
+                <option value = "T">Transgender</option>
+				<option value = "NB">Non Binary</option>
+         	    </select><br><br><br>
+         	  <label for="hobbies">Hobies</label><br><br>
+         	  <input type="text" id="hobbies" maxlength="500" name="hobbies"><br><br><br>
+         	  <label for="Height">Height (in cm) </label>
+         	  <input type="number" min="50" max="250" name="height" size="3" maxlength="3" required="number" ><br><br><br><br>
+				<select class="dropdown" name = "location" id="preferedlocation" required="select">
+					<option value selected disabled> -- selected Your Location -- </option>
+					<option value = "NAM">Assam</option>
+					<option value = "SBG">Bangalore</option>
+					<option value = "NDL">Delhi</option>
+					<option value = "NGZ">Ghaziabad</option>
+					<option value = "NGJ">Gujrat</option>
+					<option value = "SKL">Kerela</option>
+					<option value = "SMU">Mumbai</option>
+					<option value = "NND">Noida</option>
+					<option value = "SPU">Pune</option>
+					<option value = "STN">Tamil Nadu</option>
+         		</select><br><br><br>
+
+		    <h3>Personal Prefrences</h3><br>
+
+		    <label for="preferedage">Select Prefered Age</label><br><br>
+		 	<select class="dropdown" name="prefered_age" id="preferedage" required="select">
+			    <option value selected disabled> -- selected Your Prefered Age -- </option>
+                <option value = "Y">18 - 25</option>
+                <option value = "O">26 - 45</option>
+                <option value = "E">45+</option>
+         	</select><br><br><br>
+		    <label for="location"></label>Select Prefered Location<br><br>
+			<select class="dropdown" name = "prefered_location" id="preferedage" required="select">
+			    <option value selected disabled> -- selected  Prefered Location -- </option>
+             	<option value = "NAM">Assam</option>
+				<option value = "SBG">Bangalore</option>
+				<option value = "NDL">Delhi</option>
+				<option value = "NGZ">Ghaziabad</option>
+				<option value = "NGJ">Gujrat</option>
+				<option value = "SKL">Kerela</option>
+				<option value = "SMU">Mumbai</option>
+				<option value = "NND">Noida</option>
+				<option value = "SPU">Pune</option>
+				<option value = "STN">Tamil Nadu</option>
+         	</select><br><br><br>
+         	<label for="preferedgender" > Select Your Prefered Gender</label><br><br>
+			<select class="dropdown" name = "prefered_gender" id="preferedgender" required="select">
+			    <option value selected disabled> -- selected Your prefered Gender -- </option>
+                <option value = "M">Male</option>
+                <option value = "F">Female</option>
+                <option value = "A">ALL</option>
+         	</select><br><br>
+
+			<br><br><br><br>
+			<input type="submit"  value="Save Profile">
+			<input type="reset" value="Reset Everything">
+			</div>
+			</div>
+	</form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+    <script src="{% static 'js/alert.js' %}"></script>
+
+</body>
+</html>
